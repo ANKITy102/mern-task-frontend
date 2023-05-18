@@ -32,7 +32,7 @@ const TaskList = () => {
             return toast.error("Input field cannot be empty");
         }
         try {
-            await axios.post(`http://localhost:5000/api/tasks`, formData)
+            await axios.post(`https://mern-task-manager-app-api-6yvz.onrender.com/api/tasks`, formData)
             setFormData({ ...formData, name: "" });
             getTasks();
             toast.success("task added successfully");
@@ -46,8 +46,8 @@ const TaskList = () => {
         console.log(URL)
         setisLoading(true)
         try {
-            const { data } = await axios.get(`http://localhost:5000/api/tasks`);
-            // const response = await fetch("http://localhost:5000/api/tasks", {
+            const { data } = await axios.get(`https://mern-task-manager-app-api-6yvz.onrender.com/api/tasks`);
+            // const response = await fetch("https://mern-task-manager-app-api-6yvz.onrender.com/api/tasks", {
             //     method: "GET",
             //     headers: {
             //         "Content-Type": "application/json"
@@ -76,7 +76,7 @@ const TaskList = () => {
     }, [tasks])
     const deleteTask = async (id) => {
         try {
-            await axios.delete(`http://localhost:5000/api/tasks/${id}`);
+            await axios.delete(`https://mern-task-manager-app-api-6yvz.onrender.com/api/tasks/${id}`);
             getTasks()
         }
         catch (error) {
@@ -95,7 +95,7 @@ const TaskList = () => {
             return toast.error("Input field cannot be empty.")
         }
         try {
-            await axios.patch(`http://localhost:5000/api/tasks/${taskID}`, formData)
+            await axios.patch(`https://mern-task-manager-app-api-6yvz.onrender.com/api/tasks/${taskID}`, formData)
             setFormData({ ...formData, name: "" })
             setIsEditing(false)
             getTasks()
@@ -108,7 +108,7 @@ const TaskList = () => {
             completed: true
         }
         try {
-            await axios.patch(`http://localhost:5000/api/tasks/${task._id}`, newFormData)
+            await axios.patch(`https://mern-task-manager-app-api-6yvz.onrender.com/api/tasks/${task._id}`, newFormData)
             getTasks()
         } catch (error) {
             toast.error(error.message)
